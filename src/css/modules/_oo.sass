@@ -1,0 +1,14 @@
+.border
+  border: 1px solid #eee !important
+
+$dir: top left bottom right
+
+@each $d in $dir
+  .border-#{$d}
+    border-#{$d}: 1px solid #eee !important
+
+.pull-left
+  float: left!important
+
+.pull-right
+  float: right!important

@@ -1,0 +1,100 @@
+$flexbox: true
+$columns: 12
+$gutter:  10px
+$grid-breakpoints: ( xs: 0, sm: 544px, md: 768px, lg: 992px, xl: 1200px )
+
+@function breakpoint-min($name, $grid: $grid-breakpoints)
+  $min: map-get($grid, $name)
+  @return if($min !=0, $min, null)
+
+=media-breakpoint-up($name, $grid: $grid-breakpoints)
+  $min: breakpoint-min($name, $grid)
+  @if $min
+    @media (min-width: $min)
+      @content
+  @else
+    @content
+
+=make-col-offset($size, $columns: $columns)
+  margin-left: percentage($size / $columns)
+
+=make-col-push($size, $columns: $columns)
+  left: if($size > 0, percentage($size / $columns), auto)
+
+=make-col-pull($size, $columns: $columns)
+  right: if($size > 0, percentage($size / $columns), auto)
+
+=make-col-modifier($type, $size, $columns)
+  @if $type == push
+    @include make-col-push($size, $columns)
+  @else if $type == pull
+    @include make-col-pull($size, $columns)
+  @else if $type == offset
+    @include make-col-offset($size, $columns)
+
+=make-col-span($size, $columns: $columns)
+  @if $flexbox
+    flex: 0 0 percentage($size / $columns)
+  @else
+    width: percentage($size / $columns)
+
+=make-col($gutter: $gutter)
+  position: relative
+  @if not $flexbox
+    float: left
+  min-height: 1px
+  padding-left:  ($gutter / 2)
+  padding-right: ($gutter / 2)
+
+.container-fluid
+  padding: 0 ($gutter / 2)
+  margin: 0 auto
+  &:after
+    content: ''
+    display: table
+    clear: both
+
+%colstyle
+  padding: 0 ($gutter / 2)
+  box-sizing: border-box
+  min-height: 1px
+  position: relative
+
+.col
+  @extend %colstyle
+  +make-col()
+  width: 20%
+
+@each $breakpoint in map-keys($grid-breakpoints)
+  @for $i from 1 through $columns
+    .col-#{$breakpoint}-#{$i}
+      @extend %colstyle
+
+  +media-breakpoint-up($breakpoint)
+
+    %grid-column-float-#{$breakpoint}
+      float: left
+
+    @for $i from 1 through $columns
+      .col-#{$breakpoint}-#{$i}
+        @if not $flexbox
+          @extend %grid-column-float-#{$breakpoint}
+        +make-col-span($i, $columns)
+
+    @each $modifier in (pull, push, offset)
+      @for $i from 0 through $columns
+        .col-#{$breakpoint}-#{$modifier}-#{$i}
+          @include make-col-modifier($modifier, $i, $columns)
+
+
+.row
+  margin: 0 -($gutter / 2)
+  padding: 10px
+  @if $flexbox
+    display: flex
+    flex-wrap: wrap
+  @else
+    &:after
+      content: ''
+      display: table
+      clear: both

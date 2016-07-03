@@ -1,0 +1,73 @@
+@import "_grid"
+
+.cards
+  padding-top: 1rem
+  @extend .row
+
+.card
+  list-style: none
+  +make-col()
+  +make-col-span(12)
+  +media-breakpoint-up(sm)
+    +make-col-span(6)
+  +media-breakpoint-up(lg)
+    +make-col-span(4)
+  +media-breakpoint-up(xl)
+    +make-col-span(3)
+
+.card-inner
+  background: #fff
+  padding: 1rem
+  margin: 1.5rem
+  border-radius: 2px
+  box-shadow: 0px 1px 3px rgba(0,0,0,.1)
+  color: #596781
+  &:hover button
+    opacity: 1
+  .card-bottom
+    padding: .5rem
+    margin: 1rem -1rem -1rem -1rem
+    background: #FAFBFD
+    font-size: 12px
+    text-align: center
+    font-weight: 400
+
+.card-tag
+  font-size: 10px
+  overflow: auto
+  display: block
+  color: lighten(#596781, 30%)
+  letter-spacing: 1px
+  text-transform: uppercase
+
+.card-job
+  white-space: nowrap
+  text-overflow: ellipsis
+  overflow: hidden
+  max-width: 100px
+
+.card-title
+  margin: .5rem 0 1rem 0
+  font-weight: 500
+
+.card-info
+  float: left
+  padding: 0 5px
+  display: inline-block
+
+.card-control
+  position: relative
+  display: inline-block
+  button
+    position: absolute
+    top: 0
+    left: 0
+    cursor: pointer
+    width: 40px
+    height: 40px
+    text-indent: -9999px
+    border-radius: 50%
+    background: #D50000 center center no-repeat url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDM0OC4zMzMgMzQ4LjMzNCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzQ4LjMzMyAzNDguMzM0OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPHBhdGggZD0iTTMzNi41NTksNjguNjExTDIzMS4wMTYsMTc0LjE2NWwxMDUuNTQzLDEwNS41NDljMTUuNjk5LDE1LjcwNSwxNS42OTksNDEuMTQ1LDAsNTYuODUgICBjLTcuODQ0LDcuODQ0LTE4LjEyOCwxMS43NjktMjguNDA3LDExLjc2OWMtMTAuMjk2LDAtMjAuNTgxLTMuOTE5LTI4LjQxOS0xMS43NjlMMTc0LjE2NywyMzEuMDAzTDY4LjYwOSwzMzYuNTYzICAgYy03Ljg0Myw3Ljg0NC0xOC4xMjgsMTEuNzY5LTI4LjQxNiwxMS43NjljLTEwLjI4NSwwLTIwLjU2My0zLjkxOS0yOC40MTMtMTEuNzY5Yy0xNS42OTktMTUuNjk4LTE1LjY5OS00MS4xMzksMC01Ni44NSAgIGwxMDUuNTQtMTA1LjU0OUwxMS43NzQsNjguNjExYy0xNS42OTktMTUuNjk5LTE1LjY5OS00MS4xNDUsMC01Ni44NDRjMTUuNjk2LTE1LjY4Nyw0MS4xMjctMTUuNjg3LDU2LjgyOSwwbDEwNS41NjMsMTA1LjU1NCAgIEwyNzkuNzIxLDExLjc2N2MxNS43MDUtMTUuNjg3LDQxLjEzOS0xNS42ODcsNTYuODMyLDBDMzUyLjI1OCwyNy40NjYsMzUyLjI1OCw1Mi45MTIsMzM2LjU1OSw2OC42MTF6IiBmaWxsPSIjRkZGRkZGIi8+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==)
+    border: none
+    background-size: 20px
+    opacity: 0
